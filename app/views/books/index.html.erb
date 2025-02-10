@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Books</h1>
+<h1>This is the authenticated version 2</h1>
+<h1>You're logged in! Welcome to the Dashboard!</h1>
+<%= link_to "Sign Out", destroy_admin_session_path %>
 
 <div id="books">
   <% @books.each do |book| %>
