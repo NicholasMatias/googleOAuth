@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>User books</h1>
+
+<table style="width: 100%; text-align: left;">
+  <thead>
+    <tr>
+      <th style="width: 45%;">Username</th>
+      <th style="width: 45%;">Book Title</th>
+      <th style="width: 10%;" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_books.each do |user_book| %>
+      <tr>
+        <td><%= User.where(id: user_book.user_id).last&.username || "Unknown User" %></td>
+        <td><%= Book.where(id: user_book.book_id).last.title %></td>
+        <td><%= link_to 'Show', user_book %></td>
+        <td><%= link_to 'Edit', edit_user_book_path(user_book) %></td>
+        <td><%= link_to 'Destroy', user_book, method: :delete, data: {confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Book', new_user_book_path %>
+
+<br>
+
+<%= link_to 'Book Index', books_path %>
+
+<br>
+
+<%= link_to 'User Index', users_path %>
